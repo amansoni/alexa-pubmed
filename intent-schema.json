@@ -1,0 +1,169 @@
+{
+  "intents": [
+    {
+      "name": "AMAZON.CancelIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.HelpIntent",
+      "samples": []
+    },
+    {
+      "name": "AMAZON.StopIntent",
+      "samples": []
+    },
+    {
+      "name": "PublishedCount",
+      "samples": [
+        "How many papers where published in the last {range} days",
+        "How many papers published in the last {range}"
+      ],
+      "slots": [
+        {
+          "name": "range",
+          "type": "AMAZON.NUMBER",
+          "samples": []
+        }
+      ]
+    },
+    {
+      "name": "PublishedTopicCount",
+      "samples": [
+        "About {topic} ",
+        "Regarding {topic}"
+      ],
+      "slots": [
+        {
+          "name": "topic",
+          "type": "words",
+          "samples": [
+            "Tell me about {topic}",
+            "{topic}"
+          ]
+        },
+        {
+          "name": "range",
+          "type": "AMAZON.NUMBER",
+          "samples": [
+            "{range} days {topic}",
+            "Tell me about {topic} in the last {range}"
+          ]
+        }
+      ]
+    }
+  ],
+  "types": [
+    {
+      "name": "words",
+      "values": [
+        {
+          "id": null,
+          "name": {
+            "value": "cancer",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "asthma",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "plamsa",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "genetics",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "children",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "learning",
+            "synonyms": []
+          }
+        },
+        {
+          "id": null,
+          "name": {
+            "value": "emotional",
+            "synonyms": []
+          }
+        }
+      ]
+    }
+  ],
+  "prompts": [
+    {
+      "id": "Elicit.Intent-PublishedTopicCount.IntentSlot-topic",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "What life science topic . You can say cancer, or diet etc"
+        },
+        {
+          "type": "PlainText",
+          "value": "Which terms are you interested in"
+        }
+      ]
+    },
+    {
+      "id": "Elicit.Intent-PublishedTopicCount.IntentSlot-range",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "What {range} and {topic} do you want to know about"
+        }
+      ]
+    }
+  ],
+  "dialog": {
+    "version": "1.0",
+    "intents": [
+      {
+        "name": "PublishedTopicCount",
+        "confirmationRequired": false,
+        "prompts": {},
+        "slots": [
+          {
+            "name": "topic",
+            "type": "words",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicit": "Elicit.Intent-PublishedTopicCount.IntentSlot-topic"
+            }
+          },
+          {
+            "name": "range",
+            "type": "AMAZON.NUMBER",
+            "elicitationRequired": true,
+            "confirmationRequired": false,
+            "prompts": {
+              "elicit": "Elicit.Intent-PublishedTopicCount.IntentSlot-range"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
