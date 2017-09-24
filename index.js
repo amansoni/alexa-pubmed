@@ -46,6 +46,13 @@ var handlers = {
         );
 
     },
+    'ReadAbstract': function () {
+		var abst = "Eimeria tenella is an intracellular protozoan parasite that infects the intestinal tracts of domestic fowl and causes coccidiosis, a serious and sometimes lethal enteritis. Eimeria falls in the same phylum (Apicomplexa) as several human and animal parasites such as Cryptosporidium, Toxoplasma, and the malaria parasite, Plasmodium."
+		
+		this.response.speak(abst);
+					
+        this.emit(':responseReady');
+    },
     'PublishedTopicCount': function () {
         httpsGet(days, term, (myResult) => {
                 console.log("sent     : " + days + " term:" + term);

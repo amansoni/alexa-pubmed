@@ -50,6 +50,14 @@
           ]
         }
       ]
+    },
+    {
+      "name": "ReadAbstract",
+      "samples": [
+        "Tell me about interesting research",
+        "Read an abstract"
+      ],
+      "slots": []
     }
   ],
   "types": [
@@ -134,6 +142,21 @@
           "value": "What {range} and {topic} do you want to know about"
         }
       ]
+    },
+    {
+      "id": "Confirm.Intent-ReadAbstract",
+      "promptVersion": "1.0",
+      "definitionVersion": "1.0",
+      "variations": [
+        {
+          "type": "PlainText",
+          "value": "Are you sure"
+        },
+        {
+          "type": "PlainText",
+          "value": "Really, really"
+        }
+      ]
     }
   ],
   "dialog": {
@@ -163,6 +186,14 @@
             }
           }
         ]
+      },
+      {
+        "name": "ReadAbstract",
+        "confirmationRequired": true,
+        "prompts": {
+          "confirm": "Confirm.Intent-ReadAbstract"
+        },
+        "slots": []
       }
     ]
   }
